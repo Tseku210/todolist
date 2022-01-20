@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YesToDo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/logo2.jpg">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://kit.fontawesome.com/c43aa37865.js" crossorigin="anonymous"></script>
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <!-- change this to script code later -->
+    <div id="container">
+        <div id="nav">
+            <div class="logo">
+                <i class="fas fa-check"></i>
+                YesToDo
+            </div>
+            <div id="add-task">
+                <i class="fas fa-plus fa-lg" id="add-task-button"></i>
+            </div>
+        </div>
+        <div id="content">
+            <div class="overlay-new">
+                <form class="new-form project-form">
+                    <div class="new-form-header">
+                        <h2 class="new-form-heading">New Project</h2>
+                        <div class="new-form-close" id="button-cancel-project-button">X</div>
+                    </div>
+                    <div class="new-project-form-content">
+                        <div class="new-project-form-icon-choose">
+                            <label for="icon">Choose an icon: </label>
+                            <select name="icon" id="new-project-form-dropdown">
+                                <option>🎈</option>
+                                <option>⚽</option>
+                                <option>🎮</option>
+                                <option>🗑</option>
+                            </select>
+                        </div>
+                        <input type="text" class="new-project-form-name-input" placeholder="e.g gym" id="input-add-project-popup">
+                        <button type="button" class="new-form-submit" id="button-add-project-popup">ADD PROJECT</button>
+                    </div>
+                </form>
+                <form class="new-form edit-task">
+                    <div class="new-form-header">
+                        <h2 class="new-form-heading">Edit Task</h2>
+                        <div class="new-form-close" id="button-cancel-task-edit-button">X</div>
+                    </div>
+                    <div class="new-form-content">
+                        <textarea name="title" placeholder="title: " id="edit-task-title" maxlength="40" required></textarea>
+                        <!-- <textarea name="details" placeholder="details: " class="new-form-text detail" required></textarea> -->
+                        <div class="new-form-date">
+                            <div class="new-form-date-title">Due Date:</div>
+                            <input type="date" id="edit-task-edit-dueDate" name="new-todo" required>
+                        </div>
+                        <div class="new-form-priority">
+                            <div class="new-form-priority-options">
+                                <div class="new-form-priority-left-panel">
+                                    <div class="new-form-priority-title">Priority: </div>
+                                    <button type="button" class="new-form-priority-button low new-form-priority-edit-button" data-edit-priority="1">LOW</button>
+                                    <button type="button" class="new-form-priority-button medium new-form-priority-edit-button" data-edit-priority="2">MEDIUM</button>
+                                    <button type="button" class="new-form-priority-button high new-form-priority-edit-button" data-edit-priority="3">HIGH</button>
+                                </div>
+                                <div class="new-form-priority-right-panel">
+                                    <button type="button" id="edit-task-update">UPDATE</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form class="new-form new-task">
+                    <div class="new-form-header">
+                        <h2 class="new-form-heading">New Task</h2>
+                        <div class="new-form-close" id="button-cancel-task-button">X</div>
+                    </div>
+                    <div class="new-form-content">
+                        <textarea name="title" placeholder="title: " class="new-form-text title" maxlength="40" required></textarea>
+                        <!-- <textarea name="details" placeholder="details: " class="new-form-text detail" required></textarea> -->
+                        <div class="new-form-date">
+                            <div class="new-form-date-title">Due Date:</div>
+                            <input type="date" class="new-form-date-input" name="new-todo" required>
+                        </div>
+                        <div class="new-form-priority">
+                            <div class="new-form-priority-options">
+                                <div class="new-form-priority-left-panel">
+                                    <div class="new-form-priority-title">Priority: </div>
+                                    <button type="button" class="new-form-priority-button new-form-add-priority-button low priority-active" data-priority="1">LOW</button>
+                                    <button type="button" class="new-form-priority-button new-form-add-priority-button medium" data-priority="2">MEDIUM</button>
+                                    <button type="button" class="new-form-priority-button new-form-add-priority-button high" data-priority="3">HIGH</button>
+                                </div>
+                                <div class="new-form-priority-right-panel">
+                                    <button type="button" class="new-form-submit" id="button-add-task-submit">ADD TASK</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="bar">
+                <div class="items">
+                    <button id="button-home-project" class="button-default-project"><i class="fas fa-home"></i>Home</button>
+                    <button id="button-today-project" class="button-default-project"><i class="fas fa-calendar-day"></i>Today</button>
+                    <button id="button-week-project" class="button-default-project"><i class="fas fa-calendar-alt"></i>This Week</button>
+                </div>
+                <h2 id="project">Projects</h2>
+                <div class="items proj">
+                    <!-- <button class="project-item" id="test">
+                        <div class="project-left-panel">
+                            <i class="fas fa-list-ul"></i>
+                            Gym
+                        </div>
+                        <div class="project-right-panel">
+                            <i class="fas fa-times fa-sm project-delete-icon"></i>
+                        </div>
+                    </button>
+                    <button class="project-item">
+                        <div class="project-left-panel">
+                            <i class="fas fa-list-ul"></i>
+                            Study
+                        </div>
+                        <div class="project-right-panel">
+                            <i class="fas fa-times fa-sm project-delete-icon"></i>
+                        </div>
+                    </button> -->
+                </div>
+                <button id="button-add-project"><i class="fas fa-plus"></i>Add Project</button>
+            </div>
+            <div id="main">
+                <div class="todos">
+                    <!-- <h2 id="todosHeading"></h2>
+                    <div id="tasksList"> -->
+                        <!-- <button class="task">
+                            <div class="left-task-panel">
+                                <i class="far fa-circle fa-lg circle"></i>
+                                <p class="task-content">Brush teeth</p>
+                            </div>
+                            <div class="right-task-panel">
+                                <div class="task-date">No Date</div>
+                                <div class="task-edit">
+                                    <i class="fas fa-ellipsis-h fa-lg button-task-edit"></i>
+                                </div>
+                            </div>
+                        </button>
+                        <button class="task done">
+                            <div class="left-task-panel">
+                                <i class="far fa-circle fa-lg circle"></i>
+                                <p class="task-content">Read</p>
+                            </div>
+                            <div class="right-task-panel">
+                                <div class="task-date">No Date</div>
+                                <div class="task-edit">
+                                    <i class="fas fa-ellipsis-h fa-lg"></i>
+                                    
+                                </div>
+                            </div>
+                        </button> -->
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <footer>Made by Tseku</footer>
+        </div>
+    </div>
+</body>
+</html>
